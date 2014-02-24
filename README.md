@@ -1,7 +1,7 @@
 WooCode.Slack
 =============
 
-Library for slacking in .Net
+Library for [slacking](https://slack.com/) in .Net
 
 Basic support for WebHooks right now but more will be added.
 
