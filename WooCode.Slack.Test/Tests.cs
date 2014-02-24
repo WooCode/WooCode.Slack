@@ -18,6 +18,8 @@ namespace WooCode.Slack.Test
             try
             {
                 string test = null;
+                // We are doing this to get a stacktrace.
+                // No beauty but you get it right?
                 var len = test.Length;
             }
             catch (Exception e)

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Newtonsoft.Json;
 
 namespace WooCode.Slack.WebHooks
@@ -18,7 +19,7 @@ namespace WooCode.Slack.WebHooks
             var data = JsonConvert.SerializeObject(message, _jsonSerializerSettings);
             
             using(var client = new WebClient())
-                client.UploadString(message.HookUrl, data);
+                client.UploadStringAsync(new Uri(message.HookUrl), data);
         }
     }
 }

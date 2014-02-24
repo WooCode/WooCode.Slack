@@ -15,7 +15,11 @@ namespace WooCode.Slack.WebHooks
         public string Text { get; set; }
         public string Channel { get; set; }
         public string UserName { get; set; }
-        public string Icon_Url { get; set; }
+        [JsonProperty(PropertyName = "icon_url")]
+        public string IconUrl { get; set; }
+        [JsonProperty(PropertyName = "unfurl_links")]
+        public bool UnfurlLinks { get; set; }
+        
         public List<Attachment> Attachments { get; set; }
 
         /// <summary>
@@ -27,7 +31,7 @@ namespace WooCode.Slack.WebHooks
             Channel = ConfigurationManager.AppSettings["Slack.Channel"];
             UserName = ConfigurationManager.AppSettings["Slack.UserName"];
             HookUrl = ConfigurationManager.AppSettings["Slack.HookUrl"];
-            Icon_Url = ConfigurationManager.AppSettings["Slack.Icon"];
+            IconUrl = ConfigurationManager.AppSettings["Slack.Icon"];
             Attachments = new List<Attachment>();
         }
 
@@ -46,17 +50,18 @@ namespace WooCode.Slack.WebHooks
 
         public void AttachException<T>(T exception) where T : Exception
         {
-            var attachment = new Attachment();
-            attachment.Color = AttachmentColors.Danger;
+            var attachment = new Attachment
+            {
+                Color = AttachmentColor.Danger
+            };
             attachment.Fields.Add(new AttachmentField() { Title = "Type", Value = exception.GetType().FullName, Short = true });
             attachment.Fields.Add(new AttachmentField() { Title = "Message", Value = exception.Message, Short = true });
 
-            if(exception.StackTrace != null)
+            if (exception.StackTrace != null)
                 attachment.Fields.Add(new AttachmentField() { Title = "StackTrace", Value = exception.StackTrace, Short = false });
-            
+
             if (exception.InnerException != null)
             {
-                
                 attachment.Fields.Add(new AttachmentField() { Title = "InnerException Type", Value = exception.InnerException.GetType().FullName, Short = true });
                 attachment.Fields.Add(new AttachmentField() { Title = "InnerException Message", Value = exception.InnerException.Message, Short = true });
                 if (exception.InnerException.StackTrace != null)

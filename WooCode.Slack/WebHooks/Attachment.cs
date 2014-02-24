@@ -2,13 +2,6 @@ using System.Collections.Generic;
 
 namespace WooCode.Slack.WebHooks
 {
-    public class AttachmentColors
-    {
-        public const string Warning = "warning";
-        public const string Good = "good";
-        public const string Danger = "danger";
-    }
-
     public class Attachment
     {
         public string Fallback { get; set; }
@@ -21,7 +14,5 @@ namespace WooCode.Slack.WebHooks
         {
             Fields = new List<AttachmentField>();
         }
-
-
     }
 }
