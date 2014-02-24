@@ -44,10 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SlashCommand.cs" />
     <Compile Include="WebHooks\Attachment.cs" />
     <Compile Include="WebHooks\AttachmentColors.cs" />
     <Compile Include="WebHooks\AttachmentField.cs" />
     <Compile Include="WebHooks\Message.cs" />
+    <Compile Include="WebHooks\MessageExtensions.cs" />
     <Compile Include="WebHooks\WebHook.cs" />
     <Compile Include="LowercaseContractResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

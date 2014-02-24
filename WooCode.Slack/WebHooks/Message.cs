@@ -9,11 +9,19 @@ namespace WooCode.Slack.WebHooks
 {
     public class Message
     {
+        private string _channel;
+
         [JsonIgnore]
         public string HookUrl { get; set; }
 
         public string Text { get; set; }
-        public string Channel { get; set; }
+
+        public string Channel
+        {
+            get { return _channel; }
+            set { _channel = value.StartsWith("#") ? value : "#" + value; }
+        }
+
         public string UserName { get; set; }
         [JsonProperty(PropertyName = "icon_url")]
         public string IconUrl { get; set; }
@@ -46,29 +54,6 @@ namespace WooCode.Slack.WebHooks
             Text = text ?? Text;
             Channel = channel ?? Channel;
             UserName = userName ?? UserName;
-        }
-
-        public void AttachException<T>(T exception) where T : Exception
-        {
-            var attachment = new Attachment
-            {
-                Color = AttachmentColor.Danger
-            };
-            attachment.Fields.Add(new AttachmentField() { Title = "Type", Value = exception.GetType().FullName, Short = true });
-            attachment.Fields.Add(new AttachmentField() { Title = "Message", Value = exception.Message, Short = true });
-
-            if (exception.StackTrace != null)
-                attachment.Fields.Add(new AttachmentField() { Title = "StackTrace", Value = exception.StackTrace, Short = false });
-
-            if (exception.InnerException != null)
-            {
-                attachment.Fields.Add(new AttachmentField() { Title = "InnerException Type", Value = exception.InnerException.GetType().FullName, Short = true });
-                attachment.Fields.Add(new AttachmentField() { Title = "InnerException Message", Value = exception.InnerException.Message, Short = true });
-                if (exception.InnerException.StackTrace != null)
-                    attachment.Fields.Add(new AttachmentField() { Title = "InnerException StackTrace", Value = exception.InnerException.StackTrace, Short = false });
-            }
-
-            Attachments.Add(attachment);
         }
     }
 }
