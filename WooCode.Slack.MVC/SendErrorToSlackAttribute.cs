@@ -11,7 +11,7 @@ namespace WooCode.Slack.MVC
     {
         public override void OnException(ExceptionContext filterContext)
         {
-            var message = new Message("I think something is wrong.", "#exceptions");
+            var message = new Message();
             message.AttachExceptionContext(filterContext);
             WebHook.Send(message);
 
