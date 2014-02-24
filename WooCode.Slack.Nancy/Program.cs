@@ -10,8 +10,9 @@ namespace WooCode.Slack.Nancy
     {
         static void Main(string[] args)
         {
-            var host = new NancyHost(new Uri("http://projects.woocode.com:1337"));
+            var host = new NancyHost(new Uri("http://127.0.0.1:1337"));
             host.Start();
+            Console.WriteLine("Started");
             while (Console.ReadLine() != "exit")
             {
                 

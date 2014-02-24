@@ -1,9 +1,11 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
 namespace WooCode.Slack
 {
+   
     public class SlashCommand
     {
         public string Token { get; set; }
@@ -41,9 +43,24 @@ namespace WooCode.Slack
                 return From(reader.ReadToEnd());
         }
 
+        /// <summary>
+        /// Parse dynamic object with the raw definitions
+        /// </summary>
+        /// <param name="obj">Object with the raw definitions</param>
+        /// <returns></returns>
         public static SlashCommand From(dynamic obj)
         {
-            return From(Converter.ToJson(obj));
+            return new SlashCommand
+            {
+                ChannelId = obj.channel_id,
+                ChannelName = obj.channel_name,
+                Command = obj.command,
+                TeamId = obj.team_id,
+                Text = obj.text,
+                Token = obj.token,
+                UserId = obj.user_id,
+                UserName = obj.user_name
+            };
         }
     }
 }

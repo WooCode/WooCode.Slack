@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System.Collections.Generic;
+using Nancy;
 using Nancy.ModelBinding;
 using WooCode.Slack.WebHooks;
 
@@ -13,9 +14,7 @@ namespace WooCode.Slack.Nancy
 
         private object HandleSlashCommand(object arg)
         {
-            var model = this.Bind();
-            SlashCommand slash = SlashCommand.From(model);
-            
+            SlashCommand slash = SlashCommand.From(Request.Form);
             switch (slash.Command.ToLower())
             {
                 case "/hello":
