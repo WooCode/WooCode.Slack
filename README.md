@@ -3,6 +3,8 @@ WooCode.Slack
 
 Library for slacking in .Net
 
+Basic support for WebHooks right now but more will be added.
+
 Prepare you config
 ``` xml
 <?xml version="1.0" encoding="utf-8" ?>
