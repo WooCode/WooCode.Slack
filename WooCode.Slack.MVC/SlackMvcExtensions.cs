@@ -3,6 +3,9 @@ using WooCode.Slack.WebHooks;
 
 namespace WooCode.Slack.MVC
 {
+    /// <summary>
+    /// Extension methods for handling mvc related things. 
+    /// </summary>
     public static class MessageMvcExtensions
     {
         public static void AttachExceptionContext(this Message @this, ExceptionContext filterContext)

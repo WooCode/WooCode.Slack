@@ -7,6 +7,9 @@ using WooCode.Slack.WebHooks;
 
 namespace WooCode.Slack.MVC
 {
+    /// <summary>
+    /// Decorate your MVC controller with this attribute to send exceptions to your default slack channel (configured in web.config)
+    /// </summary>
     public class SendErrorToSlackAttribute : HandleErrorAttribute
     {
         public override void OnException(ExceptionContext filterContext)

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace WooCode.Slack
 {
-    class SlashCommand
+    public class SlashCommand
     {
         public string Token { get; set; }
         [JsonProperty(PropertyName = "team_id")]
@@ -20,11 +20,21 @@ namespace WooCode.Slack
         public string Command { get; set; }
         public string Text { get; set; }
 
+        /// <summary>
+        /// Create a new instance of SlashCommand from JSON string
+        /// </summary>
+        /// <param name="json">String containing JSON data</param>
+        /// <returns></returns>
         public static SlashCommand From(string json)
         {
             return JsonConvert.DeserializeObject<SlashCommand>(json);
         }
 
+        /// <summary>
+        /// Create a new instance of SlashCommand from JSON stream
+        /// </summary>
+        /// <param name="jsonStream">Stream containing JSON data</param>
+        /// <returns></returns>
         public static SlashCommand From(Stream jsonStream)
         {
             using(var reader = new StreamReader(jsonStream,Encoding.UTF8))
