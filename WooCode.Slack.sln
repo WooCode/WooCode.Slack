@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooCode.Slack.Test", "WooCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooCode.Slack.MVC", "WooCode.Slack.MVC\WooCode.Slack.MVC.csproj", "{3A004F9B-A264-4246-ABEC-917485E82564}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooCode.Slack.Nancy", "WooCode.Slack.Nancy\WooCode.Slack.Nancy.csproj", "{2CAEB35A-12AF-4D58-A67D-7A8D3350F028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3A004F9B-A264-4246-ABEC-917485E82564}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A004F9B-A264-4246-ABEC-917485E82564}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A004F9B-A264-4246-ABEC-917485E82564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CAEB35A-12AF-4D58-A67D-7A8D3350F028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CAEB35A-12AF-4D58-A67D-7A8D3350F028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CAEB35A-12AF-4D58-A67D-7A8D3350F028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CAEB35A-12AF-4D58-A67D-7A8D3350F028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

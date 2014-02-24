@@ -16,7 +16,7 @@ namespace WooCode.Slack.MVC
         {
             var message = new Message();
             message.AttachExceptionContext(filterContext);
-            WebHook.Send(message);
+            message.Send();
 
             base.OnException(filterContext);
         }

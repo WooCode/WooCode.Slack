@@ -26,7 +26,7 @@ namespace WooCode.Slack.Test
             {
                 var message = new Message("I think something is wrong.", "#exceptions");
                 message.AttachException(new NotSupportedException("I FAILED YOU MASTER",e));
-                WebHook.Send(message);
+                message.Send();
             }
         }
     }

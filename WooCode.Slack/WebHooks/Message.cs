@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
+using System.Net;
 using Newtonsoft.Json;
 
 namespace WooCode.Slack.WebHooks
 {
     public class Message
     {
+
+        static readonly Dictionary<string, string> EscapeDictionary = new Dictionary<string, string>
+        {
+            {"&", "&amp;"},
+            {"<", "&lt;"},
+            {">", "&gt;"}
+        };
+
         private string _channel;
 
         [JsonIgnore]
         public string HookUrl { get; set; }
-
         public string Text { get; set; }
 
         public string Channel
@@ -54,6 +63,15 @@ namespace WooCode.Slack.WebHooks
             Text = text ?? Text;
             Channel = channel ?? Channel;
             UserName = userName ?? UserName;
+        }
+
+        public void Send()
+        {
+            var data = Converter.ToJson(this);
+            data = EscapeDictionary.Aggregate(data, (current, escapeChar) => current.Replace(escapeChar.Key, escapeChar.Value));
+
+            using(var client = new WebClient())
+                client.UploadStringAsync(new Uri(HookUrl), data);
         }
     }
 }

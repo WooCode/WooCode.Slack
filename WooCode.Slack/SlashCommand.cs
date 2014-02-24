@@ -40,5 +40,10 @@ namespace WooCode.Slack
             using(var reader = new StreamReader(jsonStream,Encoding.UTF8))
                 return From(reader.ReadToEnd());
         }
+
+        public static SlashCommand From(dynamic obj)
+        {
+            return From(Converter.ToJson(obj));
+        }
     }
 }
