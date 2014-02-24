@@ -71,7 +71,7 @@ namespace WooCode.Slack.WebHooks
             data = EscapeDictionary.Aggregate(data, (current, escapeChar) => current.Replace(escapeChar.Key, escapeChar.Value));
 
             using(var client = new WebClient())
-                client.UploadStringAsync(new Uri(HookUrl), data);
+                client.UploadString(new Uri(HookUrl),"POST", data);
         }
     }
 }
