@@ -1,7 +1,7 @@
 WooCode.Slack
 =============
 
-Library + Bot for [slacking](https://slack.com/) in .Net
+Library + Bot for [slack](https://slack.com/) in .Net
 
 ![WooBot](http://i.imgur.com/yXlH3Md.png)
 
