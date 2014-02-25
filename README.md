@@ -10,6 +10,8 @@ Prepare you config
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <appSettings>
+    <!-- host is only needed if you use WooBot with the Nancy host -->
+    <add key="Host" value="http://127.0.0.1:1337"/>
     <!-- https://COMPANYNAME.slack.com/services/new and add Incoming WebHooks thats where you'll find your URL -->
     <add key="Slack.HookUrl"  value="https://COMPANYNAME.slack.com/services/hooks/incoming-webhook?token=TOKEN"/>
     <add key="Slack.Icon" value="http://www.woocode.com/head.png"/>
@@ -31,3 +33,5 @@ message.AttachException(new NotSupportedException("I FAILED YOU MASTER",e));
 // Then you can fire it at the moon
 message.Send();
 ```
+
+*More information about WooCode.Slack.WooBot will come later, just check the [source](https://github.com/WooCode/WooCode.Slack/tree/develop/WooCode.Slack.WooBot) ;)*
