@@ -35,3 +35,5 @@ message.Send();
 ```
 
 *More information about WooCode.Slack.WooBot will come later, just check the [source](https://github.com/WooCode/WooCode.Slack/tree/develop/WooCode.Slack.WooBot) ;)*
+
+If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your <hosturl(app.config)>/hook
