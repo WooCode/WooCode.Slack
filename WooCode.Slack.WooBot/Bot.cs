@@ -9,6 +9,9 @@ namespace WooCode.Slack.WooBot
 {
     public class Bot : NancyModule
     {
+        /// <summary>
+        /// You have to call this when you start your server to load all handlers.
+        /// </summary>
         public static void LoadHandlers()
         {
             var type = typeof(IHookHandler);
