@@ -3,6 +3,8 @@ WooCode.Slack
 
 Library + Bot for [slacking](https://slack.com/) in .Net
 
+![WooBot](http://i.imgur.com/yXlH3Md.png)
+
 Basic support for WebHooks and SlashCommands (WooBot + Nancy project).
 
 Prepare you config
