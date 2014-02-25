@@ -31,6 +31,3 @@ message.AttachException(new NotSupportedException("I FAILED YOU MASTER",e));
 // Then you can fire it at the moon
 message.Send();
 ```
-
-
-![Woo](http://i.imgur.com/HrusJom.png)
