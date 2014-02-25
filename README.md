@@ -41,6 +41,7 @@ message.Send();
 
 If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **hosturl(app.config)/hook**
 
+### Bot commands
 ``` bash
 # Start a timer for the user that makes the request
 /woobot timer start
@@ -52,6 +53,6 @@ If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webho
 /woobot echo <text> 
 ```
 
-## Add custom commands
+### Add custom commands
 Check the source until we have time to describe it ;)
 **TBD**
