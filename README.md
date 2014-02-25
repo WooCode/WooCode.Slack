@@ -45,7 +45,7 @@ If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webho
 ``` bash
 # Start a timer for the user that makes the request
 /woobot timer start
-# Stop the timer for the user and message the channel how the timer was active**
+# Stop the timer for the user and message the channel how long the timer was active
 /woobot timer stop 
 # Say hello
 /woobot hello
