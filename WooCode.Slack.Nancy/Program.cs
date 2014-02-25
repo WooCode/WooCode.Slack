@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using Nancy.Hosting.Self;
-
+using WooCode.Slack.WooBot;
 namespace WooCode.Slack.Nancy
 {
     /// <summary>
@@ -10,14 +11,25 @@ namespace WooCode.Slack.Nancy
     {
         static void Main(string[] args)
         {
-            var host = new NancyHost(new Uri("http://127.0.0.1:1337"));
-            host.Start();
-            Console.WriteLine("Started");
-            while (Console.ReadLine() != "exit")
+            Bot.LoadHandlers();
+
+            var uri = new Uri(ConfigurationManager.AppSettings["Host"]);
+            var config = new HostConfiguration {RewriteLocalhost = false};
+
+            using (var host = new NancyHost(config, uri))
             {
-                
-            }
-            host.Stop();
+                host.Start();
+
+                Console.WriteLine("Your application is running on " + uri);
+                Console.WriteLine("Enter [exit] to close the host.");
+                while (Console.ReadLine() != "exit")
+                {
+
+                }
+                host.Stop();
+            }            
         }
+
+        
     }
 }

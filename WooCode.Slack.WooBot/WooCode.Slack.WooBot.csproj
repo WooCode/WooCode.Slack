@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B771AF06-7887-4760-966E-E2D65581FB39}</ProjectGuid>
+    <ProjectGuid>{99856F1D-2BFA-4937-A2EF-9C8D6D6327AE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WooCode.Slack</RootNamespace>
-    <AssemblyName>WooCode.Slack</AssemblyName>
+    <RootNamespace>WooCode.Slack.WooBot</RootNamespace>
+    <AssemblyName>WooCode.Slack.WooBot</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,12 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,18 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter.cs" />
-    <Compile Include="WebHooks\IncomingMessage.cs" />
-    <Compile Include="WebHooks\Attachment.cs" />
-    <Compile Include="WebHooks\AttachmentColors.cs" />
-    <Compile Include="WebHooks\AttachmentField.cs" />
-    <Compile Include="WebHooks\Message.cs" />
-    <Compile Include="WebHooks\MessageExtensions.cs" />
-    <Compile Include="LowercaseContractResolver.cs" />
+    <Compile Include="Handlers\EchoHandler.cs" />
+    <Compile Include="Handlers\HelloHandler.cs" />
+    <Compile Include="Handlers\IHookHandler.cs" />
+    <Compile Include="Handlers\ShipItHandler.cs" />
+    <Compile Include="Handlers\TimerHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Bot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WooCode.Slack\WooCode.Slack.csproj">
+      <Project>{B771AF06-7887-4760-966E-E2D65581FB39}</Project>
+      <Name>WooCode.Slack</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

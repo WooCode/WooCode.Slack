@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace WooCode.Slack
+namespace WooCode.Slack.WebHooks
 {
    
-    public class SlashCommand
+    public class IncomingMessage
     {
         public string Token { get; set; }
         [JsonProperty(PropertyName = "team_id")]
@@ -19,17 +18,21 @@ namespace WooCode.Slack
         public string UserId { get; set; }
         [JsonProperty(PropertyName = "user_name")]
         public string UserName { get; set; }
-        public string Command { get; set; }
         public string Text { get; set; }
+
+        /// <summary>
+        /// This is the only property we need for this to work on SlashCommands also.
+        /// </summary>
+        public string Command { get; set; }
 
         /// <summary>
         /// Create a new instance of SlashCommand from JSON string
         /// </summary>
         /// <param name="json">String containing JSON data</param>
         /// <returns></returns>
-        public static SlashCommand From(string json)
+        public static IncomingMessage From(string json)
         {
-            return JsonConvert.DeserializeObject<SlashCommand>(json);
+            return JsonConvert.DeserializeObject<IncomingMessage>(json);
         }
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace WooCode.Slack
         /// </summary>
         /// <param name="jsonStream">Stream containing JSON data</param>
         /// <returns></returns>
-        public static SlashCommand From(Stream jsonStream)
+        public static IncomingMessage From(Stream jsonStream)
         {
             using(var reader = new StreamReader(jsonStream,Encoding.UTF8))
                 return From(reader.ReadToEnd());
@@ -48,18 +51,18 @@ namespace WooCode.Slack
         /// </summary>
         /// <param name="obj">Object with the raw definitions</param>
         /// <returns></returns>
-        public static SlashCommand From(dynamic obj)
+        public static IncomingMessage From(dynamic obj)
         {
-            return new SlashCommand
+            return new IncomingMessage
             {
                 ChannelId = obj.channel_id,
                 ChannelName = obj.channel_name,
-                Command = obj.command,
                 TeamId = obj.team_id,
                 Text = obj.text,
                 Token = obj.token,
                 UserId = obj.user_id,
-                UserName = obj.user_name
+                UserName = obj.user_name,
+                Command = obj.command
             };
         }
     }
