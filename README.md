@@ -28,9 +28,7 @@ var message = new Message("I think something is wrong.");
 message = new Message("I think something is wrong.", "#exceptions","MyName");
 // Add attachments or exceptions (will be added as attachments)
 message.AttachException(new NotSupportedException("I FAILED YOU MASTER",e));
-```
-Then you can fire it at the moon
-``` csharp
+// Then you can fire it at the moon
 message.Send();
 ```
 
