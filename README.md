@@ -31,7 +31,7 @@ message.AttachException(new NotSupportedException("I FAILED YOU MASTER",e));
 ```
 Then you can fire it at the moon
 ``` csharp
-WebHook.Send(message);
+message.Send();
 ```
 
 
