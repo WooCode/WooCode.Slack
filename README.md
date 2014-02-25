@@ -29,7 +29,7 @@ Basic support for WebHooks and SlashCommands (WooBot + Nancy project).
 // Create a new message with properties from app.config
 var message = new Message("I think something is wrong.");
 // Or supply some values
-message = new Message("I think something is wrong.", "#exceptions","MyName");
+message = new Message("I think something is wrong.", channel:"exceptions", username:"MyName");
 // Add attachments or exceptions (will be added as attachments)
 message.AttachException(new NotSupportedException("I FAILED YOU MASTER",e));
 // Then you can fire it at the moon
