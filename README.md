@@ -1,7 +1,7 @@
 WooCode.Slack
 =============
 
-Library for [slacking](https://slack.com/) in .Net
+Library + Bot for [slacking](https://slack.com/) in .Net
 
 Basic support for WebHooks and SlashCommands (WooBot + Nancy project).
 
