@@ -40,3 +40,18 @@ message.Send();
 *More information about WooCode.Slack.WooBot will come later, just check the [source](https://github.com/WooCode/WooCode.Slack/tree/develop/WooCode.Slack.WooBot) ;)*
 
 If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **hosturl(app.config)/hook**
+
+``` bash
+# Start a timer for the user that makes the request
+/woobot timer start
+# Stop the timer for the user and message the channel how the timer was active**
+/woobot timer stop 
+# Say hello
+/woobot hello
+# Echoes the <text> in the channel
+/woobot echo <text> 
+```
+
+## Add custom commands
+Check the source until we have time to describe it ;)
+**TBD**
