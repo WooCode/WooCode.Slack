@@ -1,11 +1,11 @@
 WooCode.Slack
 =============
 
-Library + Bot for [slack](https://slack.com/) in .Net
-
-![WooBot](http://i.imgur.com/yXlH3Md.png)
-
-Basic support for WebHooks and SlashCommands (WooBot + Nancy project).
+Library for [slack](https://slack.com/) in .Net
+- WebHooks(both incoming and outgoing)
+- SlashCommand parsing 
+- Bot (WooCode.Slack.WooBot + Nancy project)
+- Send ASP exceptions to slack (WooCode.Slack.MVC, experimental)
 
 ## Prepare you config
 ``` xml
@@ -37,6 +37,8 @@ message.Send();
 ```
 
 ## The Bot
+![WooBot](http://i.imgur.com/yXlH3Md.png)
+
 *More information about WooCode.Slack.WooBot will come later, just check the [source](https://github.com/WooCode/WooCode.Slack/tree/develop/WooCode.Slack.WooBot) ;)*
 
 If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **hosturl(app.config)/hook**
