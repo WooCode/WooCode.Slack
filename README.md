@@ -1,3 +1,8 @@
+## Hi and thank you for coming!
+This library is developed by WooCode and we will add functions & *fix* fixes now and then. 
+
+That said, we would love to see pullrequest and add your ideas, handlers, fixes and code to this project since we just add things that we need for our own integrations/automations right now.
+
 WooCode.Slack
 =============
 
@@ -6,13 +11,6 @@ Library for [slack](https://slack.com/) in .Net
 - SlashCommand parsing 
 - Bot (WooCode.Slack.WooBot + Nancy project)
 - Send ASP exceptions to slack (WooCode.Slack.MVC, experimental)
-
-
-## Hi and thank you for coming!
-This library is developed by WooCode and we will add functions & *fix* fixes now and then. 
-
-That said, we would love to see pullrequest and add your ideas, handlers, fixes and code to this project since we just add things that we need for our own integrations/automations right now.
-
 
 ## Prepare you config
 ``` xml
