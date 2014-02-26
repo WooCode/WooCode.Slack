@@ -65,7 +65,7 @@ If you use the WooCode.Slack.Nancy host you have to direct SlashCommands AND/OR 
 /woobot echo <text> 
 ```
 
-### Add custom commands
+### Add custom commands/handlers
 Check the source until we have time to describe it in detail ;)
 
 Adding custom handlers is really easy. Take the following [EchoHandler](https://github.com/WooCode/WooCode.Slack/blob/develop/WooCode.Slack.WooBot/Handlers/EchoHandler.cs) for example.
