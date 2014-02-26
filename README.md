@@ -41,7 +41,10 @@ message.Send();
 
 *More information about WooCode.Slack.WooBot will come later, just check the [source](https://github.com/WooCode/WooCode.Slack/tree/develop/WooCode.Slack.WooBot) ;)*
 
-If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **hosturl(app.config)/hook**
+If you use the WooCode.Slack.Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **hosturl(app.config)/hook**
+
+- WooCode.Slack.Nancy is the host project, just buid it and start your server (check the app.config).
+- WooCode.Slack.WooBot contains the Bot code & handlers that are hosted in the Nancy project.
 
 ### Bot commands
 ``` bash
@@ -56,5 +59,29 @@ If you use the Nancy host you have to direct SlashCommands AND/OR Outgoing webho
 ```
 
 ### Add custom commands
-Check the source until we have time to describe it ;)
-**TBD**
+Check the source until we have time to describe it in detail ;)
+
+Adding custom handlers is really easy. Take the following [EchoHandler](https://github.com/WooCode/WooCode.Slack/blob/develop/WooCode.Slack.WooBot/Handlers/EchoHandler.cs) for example.
+``` csharp
+using WooCode.Slack.WebHooks;
+
+namespace WooCode.Slack.WooBot.Handlers
+{
+    public class EchoHandler : IHookHandler
+    {
+        public void Handle(IncomingMessage message)
+        {
+            new Message
+            {
+                Text = string.Format("@{0} {1}", message.UserName, message.Text),
+                Channel = message.ChannelName
+            }.Send();
+        }
+    }
+}
+```
+if we write "/woobot echo some random text" in a channel the above handler will be invoked by convention <handlerAlias>Handler since the resolver ignores "Handler" in the end of the classname 
+
+<code>message.Text</code> will contain "some random text" and <code>message.UserName</code> will contain the username of the user that invoked the command.
+
+So to make your own handler you just create a new class in the Handlers folder with a name that ends with Handler (or not) and implement the <code>IHookHandler</code> interface, write your logic in <code>Handle</code> and you are done.
