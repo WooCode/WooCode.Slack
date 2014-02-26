@@ -1,5 +1,5 @@
-## Hi and thank you for coming!
-This library is developed by WooCode and we will add functions & *fix* fixes now and then. 
+## Hi and welcome!
+This library is developed by WooCode and we will add functions & make fixes now and then. 
 
 That said, we would love to see pullrequest and add your ideas, handlers, fixes and code to this project since we just add things that we need for our own integrations/automations right now.
 
@@ -48,7 +48,7 @@ message.Send();
 
 If you use the WooCode.Slack.Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **hosturl(app.config)/hook**
 
-- WooCode.Slack.Nancy is the host project, just buid it and start your server (check the app.config).
+- WooCode.Slack.Nancy is the host project, just build it and start your server (check the app.config).
 - WooCode.Slack.WooBot contains the Bot code & handlers that are hosted in the Nancy project.
 
 ### Bot commands
