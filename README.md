@@ -80,7 +80,7 @@ namespace WooCode.Slack.WooBot.Handlers
     }
 }
 ```
-if we write "/woobot echo some random text" in a channel the above handler will be invoked by convention <handlerAlias>Handler since the resolver ignores "Handler" in the end of the classname 
+if we write "/woobot echo some random text" in a channel the above handler will be invoked by convention **handlerAlias**Handler since the resolver ignores "Handler" in the end of the classname 
 
 <code>message.Text</code> will contain "some random text" and <code>message.UserName</code> will contain the username of the user that invoked the command.
 
