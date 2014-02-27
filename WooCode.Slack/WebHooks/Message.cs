@@ -11,29 +11,26 @@ namespace WooCode.Slack.WebHooks
 {
     public class Message
     {
-
         static readonly Dictionary<string, string> EscapeDictionary = new Dictionary<string, string>
         {
             {"&", "&amp;"},
             {"<", "&lt;"},
             {">", "&gt;"}
         };
-
-        private string _channel;
-
         [JsonIgnore]
         public string HookUrl { get; set; }
         public string Text { get; set; }
+        [JsonProperty(PropertyName = "icon_url")]
+        public string IconUrl { get; set; }
+        public string UserName { get; set; }
+        private string _channel;
 
         public string Channel
         {
             get { return _channel; }
-            set { _channel = value.StartsWith("#") ? value : "#" + value; }
+            set { _channel = value.StartsWith("#") || value.StartsWith("@") ? value : "#" + value; }
         }
 
-        public string UserName { get; set; }
-        [JsonProperty(PropertyName = "icon_url")]
-        public string IconUrl { get; set; }
         [JsonProperty(PropertyName = "unfurl_links")]
         public bool UnfurlLinks { get; set; }
         
@@ -44,11 +41,11 @@ namespace WooCode.Slack.WebHooks
         /// </summary>
         public Message()
         {
-            Text = ConfigurationManager.AppSettings["Slack.Text"];
-            Channel = ConfigurationManager.AppSettings["Slack.Channel"];
-            UserName = ConfigurationManager.AppSettings["Slack.UserName"];
             HookUrl = ConfigurationManager.AppSettings["Slack.HookUrl"];
+            Text = ConfigurationManager.AppSettings["Slack.Text"];
+            UserName = ConfigurationManager.AppSettings["Slack.UserName"];
             IconUrl = ConfigurationManager.AppSettings["Slack.Icon"];
+            Channel = ConfigurationManager.AppSettings["Slack.Channel"];
             Attachments = new List<Attachment>();
         }
 
@@ -70,8 +67,8 @@ namespace WooCode.Slack.WebHooks
             var data = Converter.ToJson(this);
             data = EscapeDictionary.Aggregate(data, (current, escapeChar) => current.Replace(escapeChar.Key, escapeChar.Value));
 
-            using(var client = new WebClient())
-                client.UploadString(new Uri(HookUrl),"POST", data);
+            using (var client = new WebClient())
+                client.UploadString(new Uri(HookUrl), "POST", data);
         }
     }
 }

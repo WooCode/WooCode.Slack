@@ -20,6 +20,10 @@ namespace WooCode.Slack.WebHooks
         public string UserName { get; set; }
         public string Text { get; set; }
 
+        public bool IsSlashCommand()
+        {
+            return Command != null;
+        }
         /// <summary>
         /// This is the only property we need for this to work on SlashCommands also.
         /// </summary>

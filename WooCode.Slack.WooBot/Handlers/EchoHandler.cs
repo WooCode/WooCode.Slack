@@ -4,13 +4,13 @@ namespace WooCode.Slack.WooBot.Handlers
 {
     public class EchoHandler : IHookHandler
     {
-        public void Handle(IncomingMessage message)
+        public Message Handle(IncomingMessage message)
         {
-            new Message
+            return new Message
             {
                 Text = string.Format("@{0} {1}", message.UserName, message.Text),
                 Channel = message.ChannelName
-            }.Send();
+            };
         }
     }
 }

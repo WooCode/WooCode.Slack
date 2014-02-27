@@ -4,6 +4,6 @@ namespace WooCode.Slack.WooBot.Handlers
 {
     public interface IHookHandler
     {
-        void Handle(IncomingMessage message);
+        Message Handle(IncomingMessage message);
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Configuration;
 using Nancy.Hosting.Self;
-using WooCode.Slack.WooBot;
-namespace WooCode.Slack.Nancy
+
+namespace WooCode.Slack.NancyHost
 {
     /// <summary>
     /// Simple SlackBot with Nancy
@@ -11,12 +11,10 @@ namespace WooCode.Slack.Nancy
     {
         static void Main(string[] args)
         {
-            Bot.LoadHandlers();
-
             var uri = new Uri(ConfigurationManager.AppSettings["Host"]);
-            var config = new HostConfiguration {RewriteLocalhost = false};
+            var config = new HostConfiguration { RewriteLocalhost = false };
 
-            using (var host = new NancyHost(config, uri))
+            using (var host = new Nancy.Hosting.Self.NancyHost(new BotBootstraper(), config, uri))
             {
                 host.Start();
 
@@ -27,9 +25,7 @@ namespace WooCode.Slack.Nancy
 
                 }
                 host.Stop();
-            }            
+            }
         }
-
-        
     }
 }

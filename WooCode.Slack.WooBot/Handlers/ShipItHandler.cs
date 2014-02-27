@@ -4,13 +4,13 @@ namespace WooCode.Slack.WooBot.Handlers
 {
     public class ShipItHandler : IHookHandler
     {
-        public void Handle(IncomingMessage message)
+        public Message Handle(IncomingMessage message)
         {
-            new Message
+            return new Message
             {
                 Text = string.Format("Ship IT!"),
                 Channel = message.ChannelName
-            }.Send();
+            };
         }
     }
 }

@@ -12,7 +12,7 @@ namespace WooCode.Slack.WooBot.Handlers
     {
         ConcurrentDictionary<string,Stopwatch> _timers = new ConcurrentDictionary<string, Stopwatch>();
 
-        public void Handle(IncomingMessage message)
+        public Message Handle(IncomingMessage message)
         {
             var verb = message.Text.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries)[0];
 
@@ -49,8 +49,7 @@ namespace WooCode.Slack.WooBot.Handlers
                     break;
             }
 
-            if(msg != null)
-                msg.Send();
+            return msg;
         }
     }
 }
