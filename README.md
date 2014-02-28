@@ -46,20 +46,21 @@ message.Send();
 
 *More information about WooCode.Slack.WooBot will come later, just check the [source](https://github.com/WooCode/WooCode.Slack/tree/develop/WooCode.Slack.WooBot) ;)*
 
-If you use the WooCode.Slack.Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **hosturl(app.config)/hook**
+If you use the WooCode.Slack.Nancy host you have to direct SlashCommands AND/OR Outgoing webhooks to your **Host** endpoint in app.config
 
 - WooCode.Slack.Nancy is the host project, just build it and start your server (check the app.config).
 - WooCode.Slack.WooBot contains the Bot code & handlers that are hosted in the Nancy project.
 
-### Bot commands
+### Bot commands 
+<code>slashcommands</code> will be answered by PM and <code>webhook</code> by message to the same channel
 ``` bash
 # Start a timer for the user that makes the request
 /woobot timer start
-# Stop the timer for the user and message the channel how long the timer was active
+# Stop the timer for the user and tells the user how long the timer was active
 /woobot timer stop 
 # Say hello
 /woobot hello
-# Echoes the <text> in the channel
+# Echoes the <text>
 /woobot echo <text> 
 ```
 
